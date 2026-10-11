@@ -1,0 +1,28 @@
+@page{size:210mm 280mm;margin:0}
+html,body{margin:0!important;padding:0!important;background:#f0f1e8!important;width:210mm!important;min-width:0!important;height:auto!important;min-height:0!important;color-adjust:exact;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+:root{--page-h:280mm!important}
+.print-pages{margin:0;padding:0;width:210mm}
+.print-pages .page{width:210mm!important;height:280mm!important;display:block;position:relative;break-inside:avoid;break-after:page;page-break-after:always;margin:0;box-shadow:none;border:0;flex:none}
+.print-pages .page:last-child{break-after:auto;page-break-after:auto}
+.print-pages .page:after{display:none!important}
+.print-pages .photo{cursor:default}
+.print-pages .full .page-copy{text-shadow:none}
+.print-pages .red-seal{box-shadow:none;border:.3pt solid #e0cab7}
+.print-pages .back-copy .red-seal{writing-mode:horizontal-tb;display:flex;flex-direction:row;white-space:nowrap}
+.print-pages .portrait .page-copy{display:flex;top:83%}
+.print-pages .portrait .page-copy h2{font-size:4cqw;max-width:38%;margin:0}
+.print-pages .portrait .page-copy p{font-size:2.15cqw;line-height:1.9}
+.print-pages .essay .page-copy p{font-size:2.8cqw}
+.print-pages .full .page-copy p{font-size:2.4cqw}
+.print-pages .diptych .paired{top:16%}
+.print-pages .diptych .page-copy p{font-size:2.4cqw;line-height:2}
+.print-pages .landscape-poem{font-size:2.5cqw}
+.print-pages .back-copy p{font-size:2.7cqw}
+.print-pages .page-top{font-size:2cqw}
+.print-pages .page-bottom{font-size:1.85cqw}
+*{animation:none!important;transition:none!important}
+
+.print-pages .cover>.cover-design{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.print-pages .preface .essay .page-copy h2{font-size:4.5cqw;margin-bottom:3.5cqw}
+.print-pages .preface .essay .page-copy p{position:absolute;left:0;top:19%;width:30%;font-size:2.25cqw;line-height:2}
+.print-pages .preface .essay-photo{left:auto;right:0;bottom:1%;width:66%;height:80%}

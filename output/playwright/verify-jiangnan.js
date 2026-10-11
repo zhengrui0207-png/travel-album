@@ -1,0 +1,54 @@
+async (page) => {
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const assert=(v,m)=>{if(!v)throw Error(m)};
+ const root='/Users/zhengrui/Documents/ChatGPT/旅行相册/output/playwright/';
+ await page.goto('http://127.0.0.1:4175');
+ await page.setViewportSize({width:1512,height:982});
+ await page.locator('#book .photo').evaluateAll(imgs=>Promise.all(imgs.map(im=>im.decode())));
+ assert(await page.locator('.dot').count()===16,'16 page links');
+ await page.screenshot({path:root+'jiangnan-cover.png'});
+ await page.getByRole('button',{name:'播放背景音乐',exact:true}).click();
+ await page.waitForFunction(()=>!document.querySelector('audio').paused && document.querySelector('audio').currentTime>0);
+ assert(await page.locator('#music').getAttribute('aria-pressed')==='true','music plays');
+ await page.getByRole('button',{name:'暂停背景音乐',exact:true}).click();
+ for(let spread=1;spread<=7;spread++){
+  await page.getByRole('button',{name:'下一页',exact:true}).click();
+  await page.waitForFunction(()=>!document.querySelector('.turning'));
+  const nums=await page.locator('#book .page').evaluateAll(es=>es.map(e=>+e.dataset.page));
+  assert(nums.join(',')===[spread*2,spread*2+1].join(','),'correct spread '+spread);
+  await page.locator('#book .photo').evaluateAll(imgs=>Promise.all(imgs.map(im=>im.decode())));
+  await page.screenshot({path:root+'jiangnan-spread-'+spread+'.png'});
+ }
+ await page.getByRole('button',{name:'下一页',exact:true}).click();
+ await page.waitForFunction(()=>!document.querySelector('.turning'));
+ assert(await page.getByRole('button',{name:'下一页',exact:true}).isDisabled(),'end bounded');
+ await page.getByRole('button',{name:'再读一遍 ↗',exact:true}).click();
+ await page.waitForFunction(()=>!document.querySelector('.turning'));
+ assert(await page.locator('#book .page').getAttribute('data-page')==='1','restart');
+ await page.getByRole('button',{name:'查看全部16页',exact:true}).click();
+ assert(await page.locator('#gallery .thumb').count()===16,'gallery 16');
+ await page.screenshot({path:root+'jiangnan-overview.png'});
+ await page.getByRole('button',{name:'阅读第9页：听荷',exact:true}).click();
+ await page.waitForFunction(()=>!document.querySelector('.turning'));
+ assert(await page.locator('#book .page').last().getAttribute('data-page')==='9','gallery jump');
+ await page.locator('#book .photo').first().dblclick();
+ assert(await page.locator('#lightbox').evaluate(e=>e.open),'photo lightbox');
+ await page.keyboard.press('Escape');
+ await page.setViewportSize({width:390,height:844});
+ await page.waitForFunction(()=>document.querySelectorAll('#book .page').length===1);
+ assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'mobile no overflow');
+ await page.keyboard.press('Home');await page.waitForFunction(()=>!document.querySelector('.turning'));
+ await page.screenshot({path:root+'jiangnan-mobile-cover.png'});
+ await page.getByRole('button',{name:'下一页',exact:true}).click();await page.waitForFunction(()=>!document.querySelector('.turning'));
+ assert(await page.locator('#book .page').getAttribute('data-page')==='2','mobile step');
+ await page.screenshot({path:root+'jiangnan-mobile-inside.png'});
+ await page.keyboard.press('End');await page.waitForFunction(()=>!document.querySelector('.turning'));
+ assert(await page.locator('#book .page').getAttribute('data-page')==='16','keyboard End');
+ await page.keyboard.press('ArrowLeft');await page.waitForFunction(()=>!document.querySelector('.turning'));
+ assert(await page.locator('#book .page').getAttribute('data-page')==='15','keyboard previous');
+ await page.emulateMedia({reducedMotion:'reduce'});
+ await page.keyboard.press('Home');
+ assert(await page.locator('#book .page').getAttribute('data-page')==='1','reduced motion');
+ assert(errors.length===0,'no runtime errors: '+errors.join(','));
+ return {result:'passed',desktopSpreads:7,pages:16,audio:'plays',mobile:'390 x 844',runtimeErrors:errors};
+}

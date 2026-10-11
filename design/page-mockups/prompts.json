@@ -1,0 +1,96 @@
+{
+  "status": "awaiting_model_choice_and_exact_print_spec",
+  "requested_model": "GPT-image2.5",
+  "actual_model": null,
+  "tool": null,
+  "common": "Use case: ui-mockup. Asset type: high-fidelity production web UI design for 留页 / LIUYE, a Chinese private travel portrait photobook studio. Create a flat front-facing screenshot, not a perspective device mockup. Independent photography-book aesthetic; deliberate white space, exquisite Chinese serif headings, legible sans-serif interface labels, hairline separators, subtle paper edges, restrained sage green controls. Palette: #F5F6F3, #292D2C, #7D8C80, #DDE1DB, #ADA5B7. Photographs are editorial travel portraits and coastal landscapes, clearly sample content. Every control is practical and readable. Preserve the established unified visual language across all screens. Avoid neon, gradients, overdecorated cards, generic AI branding, excessive English and illegible tiny text. No AI-powered product functionality, account login or automatic cover selection. Editing drafts stay local; an explicit publish action creates a mobile-accessible read-only web link for the chosen album pages and music. Album pages are portrait, with requested ZPS 12-inch specification and 16 pages; exact physical dimensions and cover counting are pending confirmation. Do not invent physical dimensions. Use exact supplied Chinese interface labels. The result is a design reference for a real interactive React application, not a static replacement for the app.",
+  "pages": [
+    {
+      "id": "01-editor",
+      "orientation": "landscape desktop",
+      "prompt": "Design the master editing screen. Top bar: 留页 / LIUYE, project name 风经过的时候, 已保存到本机, undo and redo, 阅读预览, 导出相册. Narrow navigation rail: 模板, 照片, 文字, 打开, 关于. Left panel: four photographic template previews 素笺, 远行, 片段, 夜色, with 素笺 selected. Center: a beautiful portrait 12-inch paper photobook cover, generous margins, a large travel portrait and delicately arranged title with generous margins; a small page strip below, not an infinite dashboard. Right inspector: 相册标题, 一句话介绍, 地点, 时间, 封面照片, 重新排版. Heading: 有些片刻，值得留一页。. Footer: 照片只保存在当前浏览器. Balance editorial beauty with usable control sizes. This is the reference screen for every later design."
+    },
+    {
+      "id": "02-empty",
+      "orientation": "landscape desktop",
+      "prompt": "Using the master design language, show the first-create empty album state. A calm blank sheet centered in the workspace, one tactile paper silhouette and room for the future book. Exact heading: 每一本相册，始于一个片刻。. Body: 把照片拖到这里，让故事慢慢展开。. Primary button 选择照片. Secondary actions 先看看示例相册 and 打开项目备份. Format note JPG / PNG / WebP. No fake existing albums, subscription banner, account creation, or made-up upload progress. Make drag-and-drop affordance clear while preserving the literary mood."
+    },
+    {
+      "id": "03-photos",
+      "orientation": "landscape desktop",
+      "prompt": "Design the photo organization state. 照片 navigation selected. Show a batch of twelve mixed portrait and landscape sample travel photographs in a calm grid, real per-photo selection checkboxes, readable image numbers, drag handles and explicit cover bookmarks. Two photographs are selected. Include 添加照片, 全选, 已选 2 张, 分组, 移除, 设为封面. Mark one photograph 用户选择的封面. Album preview and the current sequence remain accessible. Make selection and cover status visually different. No automated best-photo label or facial recognition tags. Caption: 拖动排序，双击预览."
+    },
+    {
+      "id": "04-crop",
+      "orientation": "landscape desktop",
+      "prompt": "Design the selected-photo crop editing state of the same studio. Central paper album has one large travel portrait with a subtle sage selection frame and visible drag affordance. Right panel title 照片取景. Exact controls: 完整显示, 铺满画框, 缩放 120%, 水平位置, 垂直位置, 重置取景, 替换这张照片. Display a small original photograph preview in the inspector. Keep the album itself large and readable. Show no face-detection boxes, AI tools, or fabricated automatic positioning."
+    },
+    {
+      "id": "05-chapters",
+      "orientation": "landscape desktop",
+      "prompt": "Design the chapter and text editing screen. Left navigation 文字 selected. Chapter presets 序章, 途中, 片刻, 尾声, plus 空白章节; a quiet list of editable general phrases. Central paper shows a chapter page with large Chinese title 途中 and short sentence 慢一点，留意沿途的片刻。. Right inspector has 章节标题 and 章节文字, character count, and clear editable fields. Bottom page strip locates this chapter inside a travel photobook. Preserve generous editorial whitespace. Make it clear that presets are editable and manually selected, not generated from image analysis."
+    },
+    {
+      "id": "06-reader-desktop",
+      "orientation": "landscape desktop",
+      "prompt": "Design immersive desktop reading mode. Hide editor rails and inspectors. Center a beautifully typeset portrait photography page with one or two sample travel portraits, on a quiet neutral viewing surface. Very restrained paper shadow. Readable photograph detail, small caption and page number. Controls: 上一页, 下一页, 03 / 16, 返回编辑. A small collapsible filmstrip below. No heavy 3D book simulation, marketing material or irrelevant toolbar. The page proportions must match the editor and exported album. Include a subtle music toggle with audible/muted states, an opening action 打开相册, and believable paper-turn animation affordances. On mobile use a single portrait page; desktop can display two facing portrait pages. The album has 16 pages. Share recipients only see reading controls, not author editing controls."
+    },
+    {
+      "id": "07-reader-mobile",
+      "orientation": "portrait mobile",
+      "prompt": "Design a mobile portrait viewport of the same photobook reader, approximately 390 by 844 logical pixels. Top: 留页 and 返回编辑. Center a complete portrait photo page without clipping it, using vertical breathing room gracefully. Use a travel portrait spread with short caption, visible left and right touch navigation, 03 / 16, and a horizontal scrollable page strip. Controls must be touch-sized and readable. No editing inspector, fake device frame or desktop rail shrunk to mobile. Include a subtle music toggle with audible/muted states, an opening action 打开相册, and believable paper-turn animation affordances. On mobile use a single portrait page; desktop can display two facing portrait pages. The album has 16 pages. Share recipients only see reading controls, not author editing controls."
+    },
+    {
+      "id": "08-export",
+      "orientation": "landscape desktop",
+      "prompt": "Design a focused export dialog over the softly dimmed editor. Exact heading: 让记忆，成为可以带走的礼物。. Three differentiated actions: 页面图片, PDF 摄影集, 可编辑项目备份. Concise descriptions mention 高清 JPG / ZIP, 完整页序, 原图与编辑参数. Footer: 所有导出均在本机完成，照片不会上传。. Include a clear close button. Show a separate compact inset for export progress 正在生成 60% with a progress bar and 取消; maintain the same dialog shell. Keep typography accessible and calm. No pricing, payment or subscription. A separate sharing entry can publish a read-only web album."
+    },
+    {
+      "id": "09-lightbox",
+      "orientation": "landscape desktop",
+      "prompt": "Design a large-photo preview state. Dark soft charcoal viewing backdrop, a large uncropped sample travel portrait with visible entire composition, a close icon in the upper corner, simple filename and image dimensions below. One clear action: 用这张做封面. The photograph dominates. No automatic recommendation, face labels, unnecessary film effects, generic dashboard cards or decorative frames. The same sage button styling ties this lightbox to the rest of 留页."
+    },
+    {
+      "id": "10-dialogs-and-states",
+      "orientation": "landscape component sheet",
+      "prompt": "Produce a single coherent UI component design sheet showing the remaining practical states in the same 留页 visual language, with generous space between distinct components: 1) 添加章节 dialog with 序章 / 途中 / 片刻 / 尾声 and 添加空白章节; 2) 手动分组 dialog with 人物 / 风景 / 细节 / 同行 and selection count; 3) 本机保存 explanation with 导入项目备份; 4) upload failure item with filename, reason 格式不支持, and 重新选择文件; 5) small success toast 已保存到本机 and failure toast 保存失败，请导出项目备份. These are actual production interface components, not a flowchart or poster. Do not add cloud sync, AI recognition, or account-related actions."
+    },
+    {
+      "id": "11-share",
+      "orientation": "landscape desktop with mobile recipient preview",
+      "prompt": "Use case: ui-mockup. Design the user-triggered publishing and sharing dialog for 留页. Exact text: 分享这本相册, 生成分享链接, 复制链接, 背景音乐, 关闭分享. Show portrait 16-page photobook preview and a compact phone reading preview. Explain that publishing uploads the rendered album pages and selected music, while original files and editing drafts stay on this device. Include publication progress and failure retry states. Only present a share URL after publishing succeeds. No AI, auto upload, made-up existing link, or payment controls. Use the same independent photography-book design language."
+    }
+  ],
+  "book_spec": {
+    "label": "ZPS竖12寸",
+    "orientation": "portrait",
+    "pages": 16,
+    "width_mm": null,
+    "height_mm": null,
+    "cover_in_page_count": null,
+    "needs_confirmation": [
+      "准确成品宽高",
+      "16P是否包含封面封底"
+    ]
+  },
+  "reader_requirements": {
+    "page_turn_animation": true,
+    "background_music": true,
+    "mobile_reading": true,
+    "shareable_web_link": true,
+    "music_start": "用户主动点击打开相册后尝试播放，失败时显示播放按钮",
+    "publishing": "用户主动发布后上传成品页面与音乐；草稿和原图保持本机保存"
+  },
+  "official_model_reference": {
+    "codex_builtin_documented_model": "gpt-image-2",
+    "api_models": [
+      "gpt-image-2.5-sunburst",
+      "gpt-image-2.5-flare"
+    ],
+    "sources": [
+      "https://learn.chatgpt.com/docs/image-generation",
+      "https://developers.openai.com/api/docs/guides/image-generation"
+    ],
+    "verified_at": "2026-09-28"
+  }
+}
